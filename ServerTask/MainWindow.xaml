@@ -7,11 +7,41 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="350" Width="525">
     <Grid>
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="126*"/>
-            <ColumnDefinition Width="265*"/>
-            <ColumnDefinition Width="126*"/>
-        </Grid.ColumnDefinitions>
-
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="80*"/>
+                <RowDefinition Height="239*"/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="126*"/>
+                <ColumnDefinition Width="265*"/>
+                <ColumnDefinition Width="126*"/>
+            </Grid.ColumnDefinitions>
+            <Button x:Name="Task" Content="Server Task" Width="80" Height="60" Grid.Column="0" Grid.Row="0" />
+            <Button x:Name="Clear" Content="Clear" Width="60" Height="40" Grid.Column="2" Grid.Row="0" />
+        </Grid>
+        <ListBox Margin="0,84,0,0" ItemsSource="{Binding ListCollection}"  x:Name="ListBox">
+            <ListBox.ItemTemplate>
+                <DataTemplate>
+                    <StackPanel Orientation="Vertical">
+                        <Label Content="Accept:"/>
+                        <TextBlock Text="{Binding acept}"/>
+                        <Label Content="Accept-Ecoding:"/>
+                        <TextBlock Text="{Binding acept-ecoding}"/>
+                        <Label Content="Accept-Language:"/>
+                        <TextBlock Text="{Binding acept-language}"/>
+                        <Label Content="Connection"/>
+                        <TextBlock Text="{Binding conect}"/>
+                        <Label Content="Cookie:"/>
+                        <TextBlock Text="{Binding cokie}"/>
+                        <Label Content="Host:"/>
+                        <TextBlock Text="{Binding host}"/>
+                        <Label Content="Upgrade-Insecure-Requests:"/>
+                        <TextBlock Text="{Binding upgrade-ins}"/>
+                    </StackPanel>
+                </DataTemplate>
+            </ListBox.ItemTemplate>
+        </ListBox>
     </Grid>
+
 </Window>
