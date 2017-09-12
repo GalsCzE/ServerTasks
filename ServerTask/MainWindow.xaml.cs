@@ -24,5 +24,15 @@ namespace ServerTask
         {
             InitializeComponent();
         }
+
+        private void Task_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void Clear_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }
