@@ -62,7 +62,9 @@
     </ApplicationDefinition>
     <Compile Include="Interfaces\IParse.cs" />
     <Compile Include="Interfaces\IWebClient.cs" />
+    <Compile Include="Json\JsonParser.cs" />
     <Compile Include="Task-Value\Headers.cs" />
+    <Compile Include="WebClient\TaskWeb.cs" />
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -103,8 +105,6 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="WebClient\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
