@@ -18,6 +18,7 @@ using ServerTask.Properties;
 using ServerTask.Task_Value;
 using ServerTask.WebClient;
 using System.Collections.ObjectModel;
+using System.Threading;
 
 namespace ServerTask
 {
@@ -42,16 +43,40 @@ namespace ServerTask
 
         public async Task GetHeadersListAsync()
         {
-            await Task.Run(() =>
-            {
-                Console.WriteLine(Thread.CurrentTheard.IsBackground);
+            //await Task.Run(() =>
+            //{
+                Console.WriteLine(Thread.CurrentThread.IsBackground);
                 IWebClient webClient = new TaskWeb();
-            });
+                List<Headers> heads = webClient.GetHeadersListAsync().Result;
+
+                if (heads != null && heads.Count != 0)
+                {
+                    ObservableCollection<Headers> hed = new ObservableCollection<Headers>(heads);
+
+                await Dispatcher.InvokeAsync(() =>
+                 {
+                     MessageBox.Show("Připojeno");
+                 });
+                }
+                else
+                {
+                    await Dispatcher.InvokeAsync(() =>
+                    {
+                        MessageBox.Show("Error!!");
+                    });
+                }
+           // });
+        }
+
+        private void SetHeadersItemSource(ObservableCollection<Headers> hed)
+        {
+            _listvalue = hed;
+            ListBox.ItemsSource = ListCollection;
         }
 
         private void Task_Click(object sender, RoutedEventArgs e)
         {
-
+            GetHeadersListAsync();
         }
 
         private void Clear_Click(object sender, RoutedEventArgs e)
